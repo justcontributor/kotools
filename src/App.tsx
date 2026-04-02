@@ -22,7 +22,7 @@ function App() {
     }
   };
 
-  if (currentPath === "/license") {
+  if (currentPath === "/kotools/license") {
     return (
       <div className="app-container">
         <LicensePage onClose={() => window.history.back()} />
@@ -30,7 +30,7 @@ function App() {
     );
   }
 
-  if (currentPath === "/maintain") {
+  if (currentPath === "/kotools/maintain") {
     return (
       <div className="app-container">
         <MaintainPage onClose={() => window.history.back()} />
