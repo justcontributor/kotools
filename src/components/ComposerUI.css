@@ -1,0 +1,399 @@
+@font-face {
+  font-family: "NanumBarunGothic YetHangul";
+  src:
+    local("NanumBarunGothic YetHangul"),
+    url("../fonts/NanumBarunGothic-YetHangul.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "NanumMyeongjo YetHangul";
+  src:
+    local("NanumMyeongjo YetHangul"),
+    url("../fonts/NanumMyeongjo-YetHangul.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+.composer-ui {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+@media (min-width: 860px) {
+  .composer-ui {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
+
+.input-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  flex: 1;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 2rem;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.input-section label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  font-weight: 500;
+  color: #e2e8f0;
+  font-size: 1.1rem;
+}
+
+.input-section input {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  color: white;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  outline: none;
+  -webkit-ime-mode: active;
+  -moz-ime-mode: active;
+  -ms-ime-mode: active;
+  ime-mode: active;
+}
+
+.input-section input:focus {
+  border-color: #a8b2ff;
+  background: rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 15px rgba(168, 178, 255, 0.3);
+}
+
+.input-section input:focus {
+  border-color: #a8b2ff;
+  background: rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 15px rgba(168, 178, 255, 0.3);
+}
+
+.output-section {
+  flex: 1.2;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.02);
+  padding: 2rem;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  width: 100%;
+  box-sizing: border-box;
+  min-width: 0; /* preventing child expansion forces container to stay within page */
+  overflow: hidden;
+}
+
+.output-section .result-details,
+.output-section .detail-card,
+.output-section .big-text,
+.output-section .sub-text {
+  min-width: 0;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+.big-text {
+  white-space: normal;
+}
+
+.output-section h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, #fff, #a8b2ff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.output-header h2 {
+  margin: 0;
+  line-height: 1.2;
+}
+
+.dynamic-visual {
+  margin: 1rem 0;
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.result-details {
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 100%;
+  gap: 1rem;
+}
+
+@media (min-width: 600px) {
+  .result-details {
+    grid-template-columns: 1fr 1fr; /* 2 columns */
+  }
+}
+
+.detail-card {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 1.2rem;
+  border-radius: 16px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  word-break: break-all;
+}
+
+.detail-card h3 {
+  font-size: 0.9rem;
+  color: #94a3b8;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.incomplete-indicator {
+  display: inline-block;
+  padding: 0.2rem 0.5rem;
+  background: rgba(239, 68, 68, 0.2);
+  color: #fca5a5;
+  border: 1px solid rgba(248, 113, 113, 0.4);
+  border-radius: 8px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+.big-text {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0.2rem 0;
+}
+
+.yethangul-text {
+  font-family:
+    "HCR Dotum LVT", "Source Han Sans", "Noto Sans KR", "Noto Sans CJK KR",
+    "NanumBarunGothic YetHangul", "Malgun Gothic", sans-serif;
+}
+
+.sub-text {
+  font-family: "JetBrains Mono", "Courier New", Courier, monospace;
+  font-size: 1.1rem;
+  color: #c4b5fd;
+  margin-top: 0.5rem;
+}
+
+.codepoint-link {
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  border-bottom: 1px dashed rgba(196, 181, 253, 0.3);
+}
+
+.codepoint-link:hover {
+  color: #fff;
+  border-bottom-color: #fff;
+  text-shadow: 0 0 8px rgba(196, 181, 253, 0.5);
+}
+
+.monospace-text {
+  font-family: "JetBrains Mono", "Courier New", Courier, monospace;
+  font-size: 1.5rem;
+  color: #c4b5fd;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.copy-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  border-radius: 8px;
+  padding: 0.4rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  margin-left: 0.5rem;
+  vertical-align: middle;
+}
+
+.copy-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.copy-btn:active {
+  transform: translateY(0);
+}
+
+.copy-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+.font-menu-btn {
+  color: #fff;
+  font-style: italic;
+  font-family: serif;
+  float: right;
+}
+
+.export-actions {
+  display: flex;
+  gap: 1.5rem;
+  margin: 2rem 0;
+  justify-content: center;
+  width: 100%;
+}
+
+.export-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #fff;
+  padding: 0.8rem;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.export-btn:hover {
+  background: rgba(168, 178, 255, 0.2);
+  border-color: #a8b2ff;
+  transform: translateY(-4px) scale(1.1);
+  box-shadow: 0 8px 20px rgba(168, 178, 255, 0.25);
+}
+
+.export-btn svg {
+  width: 24px;
+  height: 24px;
+  stroke-width: 2.2;
+}
+
+.output-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.18);
+  margin-bottom: 1rem;
+}
+
+.font-menu-btn {
+  width: 2.2rem;
+  height: 2.2rem;
+  line-height: 1;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(17, 24, 39, 0.6);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  transition: all 0.25s ease;
+  margin-left: 1rem;
+  cursor: pointer;
+  color: #dbeafe;
+  font-size: 1rem;
+}
+
+.font-menu-btn:hover {
+  background: rgba(168, 178, 255, 0.22);
+  transform: translateY(-1px) scale(1.02);
+}
+
+.font-popover {
+  position: absolute;
+  top: 2.6rem;
+  right: 0;
+  width: 200px;
+  background: linear-gradient(
+    145deg,
+    rgba(15, 23, 42, 0.96),
+    rgba(46, 55, 81, 0.98)
+  );
+  border: 1px solid rgba(168, 178, 255, 0.35);
+  border-radius: 16px;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
+  padding: 0.5rem;
+  backdrop-filter: blur(8px);
+  z-index: 20;
+  animation: popover-scale 0.2s ease;
+}
+
+@keyframes popover-scale {
+  from {
+    opacity: 0;
+    transform: translateY(-4px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.font-option {
+  padding: 0.6rem 0.8rem;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  color: #f8fafc;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+  margin-bottom: 0.4rem;
+}
+
+.font-option:last-child {
+  margin-bottom: 0;
+}
+
+.font-option:hover,
+.font-option.selected {
+  background: rgba(168, 178, 255, 0.18);
+  border-color: rgba(168, 178, 255, 0.42);
+  color: #f8fafc;
+  transform: translateX(1px);
+}
+
+.font-option.selected {
+  box-shadow: inset 0 0 4px rgba(168, 178, 255, 0.25);
+}
+
+/* End of file */
