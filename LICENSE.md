@@ -60,6 +60,13 @@ This project uses the following open source libraries and fonts.
 - **Version**: 6.0.1
 - **License**: MIT
 
+#### gh-pages
+
+- **Version**: 6.3.0
+- **License**: MIT
+- **URL**: <https://github.com/tschaub/gh-pages>
+- **Description**: Publishes files to a gh-pages branch for GitHub Pages deployment
+
 #### eslint-plugin-react-hooks
 
 - **Version**: 7.0.1

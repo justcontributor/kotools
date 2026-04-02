@@ -32,6 +32,7 @@ export function LicensePage({ onClose }: LicenseProps) {
           <li>opentype.js 1.3.4 (MIT License)</li>
           <li>react-markdown 10.1.0 (MIT License)</li>
           <li>remark-gfm 4.0.1 (MIT License)</li>
+          <li>gh-pages 6.3.0 (MIT License)</li>
           <li>@eslint/js, eslint-plugin-react-hooks 등 (MIT License)</li>
         </ul>
 
