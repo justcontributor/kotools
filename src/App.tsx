@@ -25,7 +25,7 @@ function App() {
   if (currentPath === "/license") {
     return (
       <div className="app-container">
-        <LicensePage onClose={() => navigate("/")} />
+        <LicensePage onClose={() => window.history.back()} />
       </div>
     );
   }
@@ -33,7 +33,7 @@ function App() {
   if (currentPath === "/maintain") {
     return (
       <div className="app-container">
-        <MaintainPage onClose={() => navigate("/")} />
+        <MaintainPage onClose={() => window.history.back()} />
       </div>
     );
   }
@@ -56,20 +56,20 @@ function App() {
           Inspired by <a href="https://zi.tools">zi.tools</a> &middot; Made by
           justcontributor &middot;{" "}
           <a
-            href="/maintain"
+            href="./maintain"
             onClick={(e) => {
               e.preventDefault();
-              navigate("/maintain");
+              navigate("./maintain");
             }}
           >
             Maintain
           </a>{" "}
           &middot;{" "}
           <a
-            href="/license"
+            href="./license"
             onClick={(e) => {
               e.preventDefault();
-              navigate("/license");
+              navigate("./license");
             }}
           >
             오픈소스 라이선스
