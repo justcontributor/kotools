@@ -131,7 +131,7 @@ export function VisualRenderer({ result, fontFamily = "nanum" }: Props) {
     }
 
     return { choBox, bottomJungBox, rightJungBox, jongBox };
-  // eslint-disable-next-line react-hooks/preserve-manual-memoization
+    // eslint-disable-next-line react-hooks/preserve-manual-memoization
   }, [hasBottom, hasRight, hasJong, hasJung, decompJung]);
 
   const renderGlyphs = (
@@ -157,13 +157,10 @@ export function VisualRenderer({ result, fontFamily = "nanum" }: Props) {
         let scaleX = finalWidthPerJamo / pathWidth;
         let scaleY = box.h / pathHeight;
 
-        // Prevent excessive width stretch while keeping vertical scale intact (no shrink of height)
         if (scaleX > scaleY * MAX_ASPECT_RATIO) {
           scaleX = scaleY * MAX_ASPECT_RATIO;
         }
 
-        // Allow vertical to remain at natural value (box.h/pathHeight) and do not shrink it due to many glyphs.
-        // However, cap the maximum volume so glyphs do not become huge.
         const MAX_GLYPH_SCALE = Math.max(box.w, box.h) / 500;
         if (scaleX > MAX_GLYPH_SCALE) scaleX = MAX_GLYPH_SCALE;
         if (scaleY > MAX_GLYPH_SCALE) scaleY = MAX_GLYPH_SCALE;
@@ -202,11 +199,6 @@ export function VisualRenderer({ result, fontFamily = "nanum" }: Props) {
 
         let scaleX = box.w / pathWidth;
         let scaleY = finalHeightPerJamo / pathHeight;
-
-        if (scaleX > scaleY * MAX_ASPECT_RATIO)
-          scaleX = scaleY * MAX_ASPECT_RATIO;
-        if (scaleY > scaleX * MAX_ASPECT_RATIO)
-          scaleY = scaleX * MAX_ASPECT_RATIO;
 
         const MAX_GLYPH_SCALE = Math.max(box.w, box.h) / 500;
         if (scaleX > MAX_GLYPH_SCALE) scaleX = MAX_GLYPH_SCALE;
