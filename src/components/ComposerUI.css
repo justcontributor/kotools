@@ -107,10 +107,6 @@
   overflow-wrap: anywhere;
 }
 
-.big-text {
-  white-space: normal;
-}
-
 .output-section h2 {
   font-size: 1.5rem;
   font-weight: 600;
@@ -198,9 +194,6 @@
   font-weight: 700;
   color: #fff;
   margin: 0.2rem 0;
-}
-
-.yethangul-text {
   font-family:
     "HCR Dotum LVT", "Source Han Sans", "Noto Sans KR", "Noto Sans CJK KR",
     "NanumBarunGothic YetHangul", "Malgun Gothic", sans-serif;

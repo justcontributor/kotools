@@ -469,8 +469,7 @@ export function ComposerUI() {
                 <InfoIcon />
                 {tooltip2 && (
                   <div className="tooltip">
-                    각각을 별개의 코드포인트로 지정합니다. 글꼴이 지원하지
-                    않으면 깨질 수 있습니다.
+                    각각을 별개의 코드포인트로 지정하여 조합한 글자를 표시니다. 글꼴이 지원하지 않으면 깨질 수 있습니다.
                   </div>
                 )}
               </button>
@@ -479,7 +478,7 @@ export function ComposerUI() {
               result.conjoining?.includes("\u1160")) && (
               <span className="incomplete-indicator">미완성 문자</span>
             )}
-            <p className="big-text yethangul-text">
+            <p className="big-text">
               {result.conjoining || "N/A"}
               {result.conjoining && (
                 <button
@@ -504,7 +503,7 @@ export function ComposerUI() {
                 <InfoIcon />
                 {tooltip3 && (
                   <div className="tooltip">
-                    한자 설명 문자 를사용한 낱자 시퀀스입니다. 한글 자모를
+                    한자 모양 설명 문자를 사용한 낱자 시퀀스입니다. 한글 자모를
                     분해하여 표시하고, 유니코드 미지원 글자도 기술합니다.
                   </div>
                 )}
