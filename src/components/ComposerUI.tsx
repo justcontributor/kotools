@@ -90,32 +90,19 @@ const InfoIcon = () => (
 );
 
 export function ComposerUI() {
-  const savedInputs = (() => {
-    try {
-      const raw = localStorage.getItem("composerInputs");
-      return raw ? JSON.parse(raw) : null;
-    } catch {
-      return null;
-    }
-  })();
+  const cho = new URLSearchParams(window.location.search).get("cho") ?? "";
+  const jung = new URLSearchParams(window.location.search).get("jung") ?? "";
+  const jong = new URLSearchParams(window.location.search).get("jong") ?? "";
+  const isEmpty = !cho && !jung && !jong;
 
-  const [choseongInput, setChoseongInput] = useState(
-    () =>
-      new URLSearchParams(window.location.search).get("cho") ||
-      savedInputs?.cho ||
-      "ㄱ",
+  const [choseongInput, setChoseongInput] = useState(() =>
+    isEmpty ? "ㄱ" : cho,
   );
-  const [jungseongInput, setJungseongInput] = useState(
-    () =>
-      new URLSearchParams(window.location.search).get("jung") ||
-      savedInputs?.jung ||
-      "ㅏ",
+  const [jungseongInput, setJungseongInput] = useState(() =>
+    isEmpty ? "ㅏ" : jung,
   );
-  const [jongseongInput, setJongseongInput] = useState(
-    () =>
-      new URLSearchParams(window.location.search).get("jong") ||
-      savedInputs?.jong ||
-      "",
+  const [jongseongInput, setJongseongInput] = useState(() =>
+    isEmpty ? "" : jong,
   );
   const [fontFamily, setFontFamily] = useState<"nanum" | "myeongjo">(
     "myeongjo",
@@ -240,22 +227,13 @@ export function ComposerUI() {
     const svgEl = document.querySelector(".visual-box-svg");
     if (!svgEl) return null;
 
-    // Clone SVG and remove background rect
-    const svgClone = svgEl.cloneNode(true) as SVGElement;
-
-    // Remove the background rect element (first rect child)
-    const rects = svgClone.querySelectorAll("rect");
-    if (rects.length > 0) {
-      rects[0].remove();
-    }
-
-    // Create a style block for the SVG with black fill and transparent background
     const svgStyles = `
       svg { background: transparent; }
       .svg-jamo-path { fill: #000; }
       .color-cho { fill: #000; }
       .color-jung { fill: #000; }
       .color-jong { fill: #000; }
+      rect {display: none !important;}
     `;
 
     const styleElement = document.createElementNS(
@@ -263,9 +241,9 @@ export function ComposerUI() {
       "style",
     );
     styleElement.textContent = svgStyles;
-    svgClone.prepend(styleElement);
+    svgEl.prepend(styleElement);
 
-    return `<?xml version="1.0" encoding="UTF-8" standalone="no"?>\n${svgClone.outerHTML}`;
+    return `<?xml version="1.0" encoding="UTF-8" standalone="no"?>\n${svgEl.outerHTML}`;
   };
 
   const handleSaveSVG = () => {
@@ -469,7 +447,8 @@ export function ComposerUI() {
                 <InfoIcon />
                 {tooltip2 && (
                   <div className="tooltip">
-                    각각을 별개의 코드포인트로 지정하여 조합한 글자를 표시니다. 글꼴이 지원하지 않으면 깨질 수 있습니다.
+                    각각을 별개의 코드포인트로 지정하여 조합한 글자를 표시니다.
+                    글꼴이 지원하지 않으면 깨질 수 있습니다.
                   </div>
                 )}
               </button>
