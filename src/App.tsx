@@ -17,8 +17,11 @@ function App() {
 
       <footer className="footer">
         <p>
-          Inspired by <a href="https://zi.tools">zi.tools</a> &middot; Made by
-          justcontributor &middot;{" "}
+          Inspired by{" "}
+          <a href="https://zi.tools" target="_blank">
+            zi.tools
+          </a>{" "}
+          &middot; Made by justcontributor &middot;{" "}
           <a
             href="https://github.com/justcontributor/kotools/blob/main/MAINTAIN.md"
             target="_blank"

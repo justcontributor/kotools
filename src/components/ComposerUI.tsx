@@ -74,6 +74,21 @@ const ShareIcon = () => (
   </svg>
 );
 
+const InfoIcon = () => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <circle cx="12" cy="12" r="10"></circle>
+    <path d="M12 16v-4"></path>
+    <path d="M12 8h.01"></path>
+  </svg>
+);
+
 export function ComposerUI() {
   const savedInputs = (() => {
     try {
@@ -106,6 +121,9 @@ export function ComposerUI() {
     "myeongjo",
   );
   const [isFontMenuOpen, setIsFontMenuOpen] = useState(false);
+  const [tooltip1, setTooltip1] = useState(false);
+  const [tooltip2, setTooltip2] = useState(false);
+  const [tooltip3, setTooltip3] = useState(false);
   const fontButtonRef = useRef<HTMLButtonElement | null>(null);
   const popoverRef = useRef<HTMLDivElement | null>(null);
 
@@ -377,7 +395,7 @@ export function ComposerUI() {
                   setIsFontMenuOpen(false);
                 }}
               >
-                나눔명조 옛한글
+                나눔명조
               </div>
             </div>
           )}
@@ -410,7 +428,22 @@ export function ComposerUI() {
 
         <div className="result-details">
           <div className="detail-card">
-            <h3>완성형</h3>
+            <h3>
+              완성형
+              <button
+                className="info-btn"
+                onMouseEnter={() => setTooltip1(true)}
+                onMouseLeave={() => setTooltip1(false)}
+              >
+                <InfoIcon />
+                {tooltip1 && (
+                  <div className="tooltip">
+                    유니코드 완성형에 등록되었다면 그 문자를 표시합니다.
+                    호환성이 뛰어납니다.
+                  </div>
+                )}
+              </button>
+            </h3>
             <p className="big-text">
               {result.precomposed || "N/A"}
               {result.precomposed && (
@@ -426,7 +459,22 @@ export function ComposerUI() {
             <p className="sub-text">{formatCodepoints(result.precomposed)}</p>
           </div>
           <div className="detail-card">
-            <h3>조합형</h3>
+            <h3>
+              조합형
+              <button
+                className="info-btn"
+                onMouseEnter={() => setTooltip2(true)}
+                onMouseLeave={() => setTooltip2(false)}
+              >
+                <InfoIcon />
+                {tooltip2 && (
+                  <div className="tooltip">
+                    각각을 별개의 코드포인트로 지정합니다. 글꼴이 지원하지
+                    않으면 깨질 수 있습니다.
+                  </div>
+                )}
+              </button>
+            </h3>
             {(result.conjoining?.includes("\u115F") ||
               result.conjoining?.includes("\u1160")) && (
               <span className="incomplete-indicator">미완성 문자</span>
@@ -446,7 +494,22 @@ export function ComposerUI() {
             <p className="sub-text">{formatCodepoints(result.conjoining)}</p>
           </div>
           <div className="detail-card">
-            <h3>IDC 낱자</h3>
+            <h3>
+              IDC 낱자
+              <button
+                className="info-btn"
+                onMouseEnter={() => setTooltip3(true)}
+                onMouseLeave={() => setTooltip3(false)}
+              >
+                <InfoIcon />
+                {tooltip3 && (
+                  <div className="tooltip">
+                    한자 설명 문자 를사용한 낱자 시퀀스입니다. 한글 자모를
+                    분해하여 표시하고, 유니코드 미지원 글자도 기술합니다.
+                  </div>
+                )}
+              </button>
+            </h3>
             <p className="sub-text">
               {result.idc || "N/A"}
               {result.idc && (
