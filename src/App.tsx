@@ -1,43 +1,7 @@
-import { useEffect, useState } from "react";
 import "./App.css";
 import { ComposerUI } from "./components/ComposerUI";
-import { LicensePage } from "./components/License";
-import { MaintainPage } from "./components/Maintain";
 
 function App() {
-  const [currentPath, setCurrentPath] = useState(
-    () => window.location.pathname || "/",
-  );
-
-  useEffect(() => {
-    const onPopState = () => setCurrentPath(window.location.pathname || "/");
-    window.addEventListener("popstate", onPopState);
-    return () => window.removeEventListener("popstate", onPopState);
-  }, []);
-
-  const navigate = (path: string) => {
-    if (window.location.pathname !== path) {
-      window.history.pushState(null, "", path);
-      setCurrentPath(path);
-    }
-  };
-
-  if (currentPath === "/kotools/license") {
-    return (
-      <div className="app-container">
-        <LicensePage onClose={() => window.history.back()} />
-      </div>
-    );
-  }
-
-  if (currentPath === "/kotools/maintain") {
-    return (
-      <div className="app-container">
-        <MaintainPage onClose={() => window.history.back()} />
-      </div>
-    );
-  }
-
   return (
     <div className="app-container">
       <header className="header">
@@ -56,21 +20,15 @@ function App() {
           Inspired by <a href="https://zi.tools">zi.tools</a> &middot; Made by
           justcontributor &middot;{" "}
           <a
-            href="./maintain"
-            onClick={(e) => {
-              e.preventDefault();
-              navigate("./maintain");
-            }}
+            href="https://github.com/justcontributor/kotools/blob/main/MAINTAIN.md"
+            target="_blank"
           >
             Maintain
           </a>{" "}
           &middot;{" "}
           <a
-            href="./license"
-            onClick={(e) => {
-              e.preventDefault();
-              navigate("./license");
-            }}
+            href="https://github.com/justcontributor/kotools/blob/main/LICENSE.md"
+            target="_blank"
           >
             오픈소스 라이선스
           </a>
