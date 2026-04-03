@@ -27,7 +27,6 @@ ko.tools는 현대 한글과 옛한글을 자유롭게 합성하고 시각화할
 - **클립보드 복사**: SVG 경로 복사
 - **웹 공유**: Web Share API를 통한 SVG 공유
 - **URL 쿼리**: URL 쿼리와 입력 연동
-- **로컬 저장**: 입력 상태 브라우저 저장
 
 ## (개발자용) 설치 및 실행
 
@@ -35,24 +34,24 @@ ko.tools는 현대 한글과 옛한글을 자유롭게 합성하고 시각화할
 
 1. 저장소 클론:
 
-```bash
-git clone https://github.com/justcontributor/kotools.git
-cd kotools
-```
+   ```bash
+   git clone https://github.com/justcontributor/kotools.git
+   cd kotools
+   ```
 
-2. 의존성 설치:
+1. 의존성 설치:
 
-```bash
-npm install
-```
+   ```bash
+   npm install
+   ```
 
-3. 개발 서버 실행:
+1. 개발 서버 실행:
 
-```bash
-npm run dev --port 3000
-```
+   ```bash
+   npm run dev --port 3000
+   ```
 
-4. 브라우저에서 <http://localhost:3000/kotools/> 접속
+1. 브라우저에서 <http://localhost:3000/kotools/> 접속
 
 ### 빌드 및 배포
 
