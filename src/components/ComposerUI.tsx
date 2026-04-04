@@ -1,10 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import {
-  composeKotools,
-  decomposeString,
-  isVowel,
-  isConsonant,
-} from "../engine/composer";
+import { composeKotools } from "../engine/composer";
 import "./ComposerUI.css";
 import { VisualRenderer } from "./VisualRenderer";
 
@@ -114,44 +109,6 @@ export function ComposerUI() {
   const fontButtonRef = useRef<HTMLButtonElement | null>(null);
   const popoverRef = useRef<HTMLDivElement | null>(null);
 
-  const dubeolsikMap: Record<string, string> = {
-    q: "ㅂ",
-    w: "ㅈ",
-    e: "ㄷ",
-    r: "ㄱ",
-    t: "ㅅ",
-    y: "ㅛ",
-    u: "ㅕ",
-    i: "ㅑ",
-    o: "ㅐ",
-    p: "ㅔ",
-    a: "ㅁ",
-    s: "ㄴ",
-    d: "ㅇ",
-    f: "ㄹ",
-    g: "ㅎ",
-    h: "ㅗ",
-    j: "ㅓ",
-    k: "ㅏ",
-    l: "ㅣ",
-    z: "ㅋ",
-    x: "ㅌ",
-    c: "ㅊ",
-    v: "ㅍ",
-    b: "ㅠ",
-    n: "ㅜ",
-    m: "ㅡ",
-  };
-
-  const toHangulJamo = (value: string) =>
-    value
-      .split("")
-      .map((ch) => {
-        const lower = ch.toLowerCase();
-        return dubeolsikMap[lower] ?? ch;
-      })
-      .join("");
-
   useEffect(() => {
     if (!isFontMenuOpen) return;
 
@@ -200,24 +157,6 @@ export function ComposerUI() {
       // ignore when fail
     }
   }, [choseongInput, jungseongInput, jongseongInput]);
-
-  const handleChoChange = (raw: string) => {
-    const text = toHangulJamo(raw);
-    const jamos = decomposeString(text).filter(isConsonant).join("");
-    setChoseongInput(jamos);
-  };
-
-  const handleJungChange = (raw: string) => {
-    const text = toHangulJamo(raw);
-    const jamos = decomposeString(text).filter(isVowel).join("");
-    setJungseongInput(jamos);
-  };
-
-  const handleJongChange = (raw: string) => {
-    const text = toHangulJamo(raw);
-    const jamos = decomposeString(text).filter(isConsonant).join("");
-    setJongseongInput(jamos);
-  };
 
   const handleCopy = (text: string | null) => {
     if (text) navigator.clipboard.writeText(text);
@@ -319,7 +258,7 @@ export function ComposerUI() {
           <span>초성 (Initial)</span>
           <input
             value={choseongInput}
-            onChange={(e) => handleChoChange(e.target.value)}
+            onChange={(e) => setChoseongInput(e.target.value)}
             placeholder="e.g. ㄱ, ㄱㅂㅅ"
           />
         </label>
@@ -328,7 +267,7 @@ export function ComposerUI() {
           <span>중성 (Medial)</span>
           <input
             value={jungseongInput}
-            onChange={(e) => handleJungChange(e.target.value)}
+            onChange={(e) => setJungseongInput(e.target.value)}
             placeholder="e.g. ㅏ, ㅏㅓ"
           />
         </label>
@@ -337,7 +276,7 @@ export function ComposerUI() {
           <span>종성 (Final)</span>
           <input
             value={jongseongInput}
-            onChange={(e) => handleJongChange(e.target.value)}
+            onChange={(e) => setJongseongInput(e.target.value)}
             placeholder="e.g. ㅇ, ㄹㅂ"
           />
         </label>
